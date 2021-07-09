@@ -23,10 +23,11 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             // <==><==><==><==><==> ?? ?? ?? ?? ?? <==><==><==><==><==>
             $table->addColumn();
-            $table->increments('TaskID');
+            $table->increments('TaskID'); // how to define like T001, T002, T003??
             $table->string('Description');
-            $table->isBoolean('isCompleted');
+            $table->isBoolean('isCompleted')->default(false);
             $table->time('Deadline');
+            $table->timestamps();
 
 
         });
