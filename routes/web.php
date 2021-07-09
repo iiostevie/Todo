@@ -17,3 +17,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Display all tasks
+Route::get('/task',function () {
+    return view('task');
+});
+
+/*
+// Add new task
+Route::get('/task/add', function(Request $request){
+
+});
+
+// Delete an existing tasks
+
+Route::get('/task/{id}/delete', function($id){
+
+});
+
+*/
+
