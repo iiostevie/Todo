@@ -32,21 +32,14 @@ class CreateTasksTable extends Migration
         //Schema::table()
     }
 
-    /* 原始
-    public function up()
-    {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
-    */
 
     /**
      * Reverse the migrations.
      *
      * @return void
      */
+
+    //反向
     public function down()
     {
         Schema::dropIfExists('tasks');

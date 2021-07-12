@@ -14,7 +14,11 @@ class UpdateUsersInfo extends Migration
     public function up()
     {
         Schema::table('User', function (Blueprint $table) {
-
+            $table->increments('id')->first(); // how to define like T001, T002, T003??
+            $table->mediumText('description');
+            $table->boolean('iscompleted')->default(false);
+            $table->time('due')->nullable();
+            $table->timestamps();
         });
     }
 

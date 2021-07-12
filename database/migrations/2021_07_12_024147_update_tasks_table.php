@@ -14,7 +14,11 @@ class UpdateTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            //
+            $table -> increments('id');
+            $table -> string('name');
+            $table -> string('description');
+            $table -> boolean('iscompleted') -> $this->default(false);
+            $table -> timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class UpdateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('tasks');
     }
 }
