@@ -54,12 +54,22 @@
                         <tr>
                             <!-- Task Name -->
                             <td class="table-text">
-                                <div>{{ $task->name }}</div>
+                                <div>{{ $task->id }}</div>
+                                <div>{{ $task->description }}</div>
+                                <div>{{ $task->iscompleted }}</div>
                             </td>
 
+
+                                <!-- Delete Button -->
                             <td>
-                                <!-- TODO: Delete Button -->
+                                <form action="/task/{{ $task->id }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+
+                                    <button>Delete Task</button>
+                                </form>
                             </td>
+
                         </tr>
                     @endforeach
                     </tbody>
@@ -68,20 +78,4 @@
         </div>
     @endif
 
-    <tr>
-        <!-- Task Name -->
-        <td class="table-text">
-            <div>{{ $task->name }}</div>
-        </td>
-
-        <!-- Delete Button -->
-        <td>
-            <form action="/task/{{ $task->id }}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-
-                <button>Delete Task</button>
-            </form>
-        </td>
-    </tr>
 @endsection
