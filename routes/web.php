@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request; // all()
 use App\Http\Controllers\TaskController;
-use Task;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +17,11 @@ use Task;
 */
 
 Route::get('/', function () {
-    return view('task');
+    $tasks = Task::orderBy('created_at', 'asc')->get();
+
+    return view('task', [
+        'tasks' => $tasks
+    ]);
 });
 
 
@@ -35,22 +40,18 @@ Route::post('/task',function (Request $request) {
     //create task
 
     $task = new Task;
-    $task->name = $request->name;
+    $task->id = $request->id;
     $task->save();
 
     return redirect('/');
 });
 
 
-// Add new task
-Route::post('/task/add', function(Request $request){
-
-});
-
 // Delete an existing tasks
 
 Route::delete('/task/{id}', function($id){
 
+    return redirect('/');
 });
 
 

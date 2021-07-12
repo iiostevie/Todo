@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
     use HasFactory;
-    protected $taskinfo = ['name', 'description', 'iscompleted'];
+    protected $taskinfo = ['id', 'description', 'iscompleted','due'];
 }

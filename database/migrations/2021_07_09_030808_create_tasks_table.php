@@ -15,18 +15,17 @@ class CreateTasksTable extends Migration
     //
     public function up()
     {
-        Schema::dropIfExists('Task');
+        Schema::dropIfExists('tasks');
 
 
         // 創建資料表 create(<tableName>, closure封包)
         Schema::create('tasks', function (Blueprint $table) {
             //$table->addColumn();
-            $table->increments('id')->first(); // how to define like T001, T002, T003??
-            $table->mediumText('description');
+            $table->increments('id'); // how to define like T001, T002, T003??
+            $table->mediumText('description')->nullable();
             $table->boolean('iscompleted')->default(false);
             $table->time('due')->nullable();
             $table->timestamps();
-
         });
 
         //Schema::table()
