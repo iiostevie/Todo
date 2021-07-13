@@ -6,7 +6,7 @@
 
     <div class="panel-body">
         <!-- Display Validation Errors -->
-    @include('commonerrors')
+    @include('Common.Errors')
 
     <!-- New Task Form -->
         <form action="/task" method="POST" class="form-horizontal">
@@ -17,7 +17,7 @@
                 <label for="task" class="col-sm-3 control-label">Task</label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="name" id="task-name" class="form-control">
+                    <input type="text" name="description" id="id" class="form-control">
                 </div>
             </div>
 
@@ -36,7 +36,6 @@
     @if (count($tasks) > 0)
         <div class="panel panel-default">
             <div class="panel-heading">
-                Current Tasks
             </div>
 
             <div class="panel-body">
@@ -44,12 +43,13 @@
 
                     <!-- Table Headings -->
                     <thead>
-                    <th>Task</th>
+                    <th>All Tasks</th>
                     <th>&nbsp;</th>
                     </thead>
 
                     <!-- Table Body -->
                     <tbody>
+
                     @foreach ($tasks as $task)
                         <tr>
                             <!-- Task Name -->
@@ -70,8 +70,12 @@
                                 </form>
                             </td>
 
+
+                            <!-- Complete Button -->
+
                         </tr>
                     @endforeach
+
                     </tbody>
                 </table>
             </div>

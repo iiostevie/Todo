@@ -3,7 +3,6 @@
 use App\Models\Task;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request; // all()
-use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,10 @@ use App\Http\Controllers\TaskController;
 |
 */
 
+// Display all tasks
 Route::get('/', function () {
+
+    // Incremental Order
     $tasks = Task::orderBy('created_at', 'asc')->get();
 
     return view('task', [
@@ -24,11 +26,10 @@ Route::get('/', function () {
     ]);
 });
 
-
-// Display all tasks
-Route::post('/task',function (Request $request) {
+// Create new task
+Route::post('/task',function(Request $request){
     $validator = Validator::make($request->all(),[
-        'name' => 'required|max:255'
+        'description' => 'required|max:255'
     ]);
 
     if ($validator->fails()){
@@ -37,19 +38,25 @@ Route::post('/task',function (Request $request) {
             ->withErrors($validator);
 
     }
-    //create task
 
     $task = new Task;
-    $task->id = $request->id;
+    $task->description = $request->description;
     $task->save();
 
     return redirect('/');
 });
 
+// Update status
+
+
+
+
+
 
 // Delete an existing tasks
 
 Route::delete('/task/{id}', function($id){
+    Task::findOrFail($id)->delete();
 
     return redirect('/');
 });
