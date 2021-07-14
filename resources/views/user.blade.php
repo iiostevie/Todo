@@ -7,8 +7,17 @@
     @include('Common.Errors')
 
         <!-- New Task Form -->
-        <form action="/task" method="POST" class="form-horizontal">
+        <form action="/register" method="POST" class="form-horizontal">
         {{ csrf_field() }}
+
+        <!-- User Name -->
+            <div class="form-group">
+                <label for="user" class="col-sm-3 control-label">Name : </label>
+
+                <div class="col-sm-6">
+                    <input type="text" name="name" id="id" class="form-control">
+                </div>
+            </div>
 
         <!-- User Email -->
             <div class="form-group">

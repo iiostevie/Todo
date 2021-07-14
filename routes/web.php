@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request; // all()
 
@@ -69,6 +70,17 @@ Route::post('task/{id}/completed',function($id){
 
 
 // Register pages
-Route::get('/register',function(Request $request ){
+Route::get('/register',function(){
     return view('user');
+});
+
+Route::post('/register',function(Request $request ){
+
+    $user = new User;
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = $request->password;
+    $user->save();
+
+    return redirect('/register');
 });
