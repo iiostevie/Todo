@@ -4,6 +4,8 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request; // all()
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -74,13 +76,17 @@ Route::get('/register',function(){
     return view('user');
 });
 
+// Only authenticated user can post the new user
 Route::post('/register',function(Request $request ){
 
     $user = new User;
     $user->name = $request->name;
     $user->email = $request->email;
-    $user->password = $request->password;
+    $user->password = Hash::make($request->password);
     $user->save();
 
+    echo $request;
+
+
     return redirect('/register');
-});
+}); // ->middleware('auth');
