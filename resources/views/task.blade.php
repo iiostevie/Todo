@@ -12,7 +12,7 @@
         <form action="/task" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
-        <!-- Task Name -->
+            <!-- Task Description -->
             <div class="form-group">
                 <label for="task" class="col-sm-3 control-label">Task</label>
 
@@ -59,7 +59,6 @@
                                 <div>{{ $task->iscompleted }}</div>
                             </td>
 
-
                                 <!-- Delete Button -->
                             <td>
                                 <form action="/task/{{ $task->id }}" method="POST">
@@ -72,7 +71,12 @@
 
 
                             <!-- Complete Button -->
-
+                            <td>
+                                <form action="/task/{task->$id}/completed" method="POST">
+                                    {{ csrf_field() }}
+                                    <button>Completed</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
 

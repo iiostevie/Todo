@@ -61,4 +61,14 @@ Route::delete('/task/{id}', function($id){
     return redirect('/');
 });
 
+Route::post('task/{id}/completed',function($id){
+   // $task = Task::find($id)
+    return redirect('/');
+});
 
+
+
+// Register pages
+Route::get('/register',function(Request $request ){
+    return view('user');
+});
