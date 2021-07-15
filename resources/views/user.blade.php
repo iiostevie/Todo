@@ -2,6 +2,19 @@
 
 @section('Content')
 
+    <body id="app-layout">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/register') }}">
+                    Account Information
+                </a>
+            </div>
+
+        </div>
+    </nav>
     <div class="panel-body">
         <!-- Display Validation Errors -->
     @include('Common.Errors')
@@ -33,15 +46,34 @@
                 <label for="user" class="col-sm-3 control-label">Password : </label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="password" id="id" class="form-control">
+                    <input type="text" name="password" id="id" class="form-control" >
                 </div>
             </div>
 
-            <!-- Add Task Button -->
+            <!-- Register Button -->
             <div class="form-group">
                 <div class="col-sm-offset-3 col-sm-6">
-                    <button type="submit" class="btn btn-default">
+                    <button type="submit" name="register" class="btn btn-default">
                         Register
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Login Button -->
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <button type="submit" name="login" class="btn btn-default">
+                        Log in
+                    </button>
+                </div>
+            </div>
+
+            <!-- Reset Button -->
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-6">
+                    <button type="reset" class="btn btn-default">
+                        Reset
                     </button>
                 </div>
             </div>

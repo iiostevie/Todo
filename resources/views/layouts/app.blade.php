@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>
-            Week1 Practice –– Task List
+            Practice –– Task List
         </title>
 
         <!-- CSS And JavaScript -->
@@ -29,19 +29,7 @@
     </head>
 
 
-    <body id="app-layout">
-    <nav class="navbar navbar-default">
-        <div class="container">
-            <div class="navbar-header">
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Task List
-                </a>
-            </div>
-
-        </div>
-    </nav>
 
     @yield('content')
 

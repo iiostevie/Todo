@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('task', [
         'tasks' => $tasks
     ]);
-});
+});// ->middleware('auth');
 
 // Create new task
 Route::post('/task',function(Request $request){
@@ -77,16 +77,42 @@ Route::get('/register',function(){
 });
 
 // Only authenticated user can post the new user
-Route::post('/register',function(Request $request ){
+Route::post('/register',
+    function(Request $request ){
+   // dd($request->input('email'));
+        //dd(bcrypt('pass'));
 
-    $user = new User;
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    $user->save();
+    // 按下註冊鍵
+     if($request->input('register')){
+         $user = new User;
+         $user->name = $request->name;
+         $user->email = $request->email;
+         //$user->password = Hash::make($request->password);           // Hash the password
+         $user->password = bcrypt($request->password);             // The other way to has the password
+         $user->save();
+     }
 
-    echo $request;
+    // 按下登入鍵
+
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            //auth::login($request->usermail);
+            //dd(auth()->user());
+            dd(session()->all());
+        }
+
+        /*
+    auth::login($request->input('email') );
+
+     if($request->input('login')){
+         $usermail = $request->email;
+         $userpass = $request->password;
+
+
+     }
+
+        */
+
 
 
     return redirect('/register');
-}); // ->middleware('auth');
+});

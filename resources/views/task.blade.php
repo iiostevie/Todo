@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+    <body id="app-layout">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    Task List
+                </a>
+            </div>
+
+        </div>
+    </nav>
     <!-- Create Task Form... -->
     <!-- Bootstrap Boilerplate... -->
 
