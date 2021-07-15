@@ -46,7 +46,7 @@
                 <label for="user" class="col-sm-3 control-label">Password : </label>
 
                 <div class="col-sm-6">
-                    <input type="text" name="password" id="id" class="form-control" >
+                    <input type="password" name="password" id="id" class="form-control" >
                 </div>
             </div>
 

@@ -19,35 +19,11 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // Display all tasks
-Route::get('/', function () {
-
-    // Incremental Order
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-
-    return view('task', [
-        'tasks' => $tasks
-    ]);
-});// ->middleware('auth');
+Route::get('/task',[\App\Http\Controllers\TaskController::class, 'index']);
 
 // Create new task
-Route::post('/task',function(Request $request){
-    $validator = Validator::make($request->all(),[
-        'description' => 'required|max:255'
-    ]);
+Route::post('/task','App\Http\Controllers\TaskController@store');
 
-    if ($validator->fails()){
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-
-    }
-
-    $task = new Task;
-    $task->description = $request->description;
-    $task->save();
-
-    return redirect('/');
-});
 
 // Update status
 
@@ -61,18 +37,18 @@ Route::post('/task',function(Request $request){
 Route::delete('/task/{id}', function($id){
     Task::findOrFail($id)->delete();
 
-    return redirect('/');
+    return redirect('/task');
 });
 
 Route::post('task/{id}/completed',function($id){
    // $task = Task::find($id)
-    return redirect('/');
+    return redirect('/task');
 });
 
 
 
 // Register pages
-Route::get('/register',function(){
+Route::get('/',function(){
     return view('user');
 });
 
@@ -83,7 +59,8 @@ Route::post('/register',
         //dd(bcrypt('pass'));
 
     // 按下註冊鍵
-     if($request->input('register')){
+     if($request->name=='register'){
+         dd("Create!");
          $user = new User;
          $user->name = $request->name;
          $user->email = $request->email;
@@ -103,7 +80,7 @@ Route::post('/register',
 
 
 
-    return redirect('/register');
+    return redirect('/');
 });
 
 

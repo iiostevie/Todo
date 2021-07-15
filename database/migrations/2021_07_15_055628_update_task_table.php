@@ -14,7 +14,7 @@ class UpdateTaskTable extends Migration
     public function up()
     {
         Schema::table('tasks', function(Blueprint $table){
-           $table->integer('userid')->nullable(false);
+           $table->foreignId('userid')->constrained('users');
 
         });
     }
