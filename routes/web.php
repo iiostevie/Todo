@@ -88,7 +88,7 @@ Route::post('/register',
          $user->name = $request->name;
          $user->email = $request->email;
          //$user->password = Hash::make($request->password);           // Hash the password
-         $user->password = bcrypt($request->password);             // The other way to has the password
+         $user->password = bcrypt($request->password);             // The other way to hash the password
          $user->save();
      }
 
@@ -100,19 +100,11 @@ Route::post('/register',
             dd(session()->all());
         }
 
-        /*
-    auth::login($request->input('email') );
-
-     if($request->input('login')){
-         $usermail = $request->email;
-         $userpass = $request->password;
-
-
-     }
-
-        */
 
 
 
     return redirect('/register');
 });
+
+
+//Route::post(/register,\App\Http\Controllers\TaskController::@create)
