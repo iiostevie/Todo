@@ -19,9 +19,8 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // Display all tasks
-Route::get('/auth/{user}/tasks',[\App\Http\Controllers\TaskController::class, 'index'])->name('table');
+Route::get('/auth/{user}/tasks',[\App\Http\Controllers\TaskController::class, 'index'])->name("table");
 
-Route::get('/tasks',[\App\Http\Controllers\TaskController::class, 'index']);
 // Create new task
 Route::post('/auth/{user}/tasks','App\Http\Controllers\TaskController@store');
 

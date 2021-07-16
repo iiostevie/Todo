@@ -22,7 +22,7 @@
     @include('Common.Errors')
 
     <!-- New Task Form -->
-        <form action="/auth/{{$user->id}}/task" method="POST" class="form-horizontal">
+        <form action="/auth/{{$user->id}}/tasks" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
             <!-- Task Description -->
@@ -74,7 +74,7 @@
 
                                 <!-- Delete Button -->
                             <td>
-                                <form action="/auth/{{$user->Auth::id()}}/tasks/{{ $task->id }}" method="POST">
+                                <form action="/auth/{{$user->id}}/tasks/{{ $task->id }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 

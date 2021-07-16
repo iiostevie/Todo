@@ -17,7 +17,7 @@ class User extends Authenticatable
     // get all of the tasks of the user.
     public function tasks()
     {
-        return $this->hasMany('\App\Models\Task');
+        return $this->hasMany(Task::class,"userid","id");
     }
 }
 

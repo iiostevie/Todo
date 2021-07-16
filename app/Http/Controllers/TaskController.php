@@ -27,12 +27,12 @@ class TaskController extends Controller
 
         // create a new task
 
-        $request->Auth::user()->tasks()->create([
+        $user = \Auth::user();
+        //dd($request->user());
+        $request->user()->tasks()->create([
+            //'userid' => $user->id,
             'description' => $request->description,
         ]);
-
-
-
 
 
 /*
@@ -43,7 +43,7 @@ class TaskController extends Controller
 */
 
 
-        return redirect(route(table));
+        return redirect()->route("table",['user'=>\Auth::user()]);
 
     }
 
