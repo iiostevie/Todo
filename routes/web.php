@@ -28,17 +28,17 @@ Route::post('/auth/{user}/tasks','App\Http\Controllers\TaskController@store');
 // Update status
 
 
-
-
-
-
 // Delete an existing tasks
-
+/*
 Route::delete('/auth/{user}/tasks/{id}', function($user, $id){
     Task::findOrFail($id)->delete();
 
     return redirect('/auth/{user}/tasks');
 });
+
+*/
+
+Route::delete('/auth/{user}/tasks/{id}','App\Http\Controllers\TaskController@destroy');
 
 
 
@@ -50,14 +50,12 @@ Route::get('/',function(){
 
 // Only authenticated user can post the new user
 Route::post('/', function(Request $request ){
-    //dd('test');
-    //dd(session()->all());
     if(Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-        //dd("Success");
-        //dd(session()->all());
         $id = \Auth::id();
         return redirect("/auth/{$id}/tasks");
     }
-
+    else{
+        view('Common.Errors');
+    }
     return redirect('/');
 })->name('login');

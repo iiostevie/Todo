@@ -27,21 +27,9 @@ class TaskController extends Controller
 
         // create a new task
 
-        $user = \Auth::user();
-        //dd($request->user());
         $request->user()->tasks()->create([
-            //'userid' => $user->id,
             'description' => $request->description,
         ]);
-
-
-/*
-        $task = new Task;
-        $task->description = $request->description;
-        $task->userid = 1;
-        $task->save();
-*/
-
 
         return redirect()->route("table",['user'=>\Auth::user()]);
 
@@ -55,6 +43,7 @@ class TaskController extends Controller
     }
 
     public function destroy(Request $request){
-
+        Task::findOrFail($request->id)->delete();
+        return redirect()->route("table",['user'=>\Auth::user()]);
     }
 }
