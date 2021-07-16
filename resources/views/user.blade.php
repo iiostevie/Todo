@@ -8,7 +8,7 @@
             <div class="navbar-header">
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/register') }}">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     Account Information
                 </a>
             </div>
@@ -19,8 +19,8 @@
         <!-- Display Validation Errors -->
     @include('Common.Errors')
 
-        <!-- New Task Form -->
-        <form action="/register" method="POST" class="form-horizontal">
+        <!-- Account Form -->
+        <form action="/" method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
         <!-- User Name -->
@@ -50,14 +50,7 @@
                 </div>
             </div>
 
-            <!-- Register Button -->
-            <div class="form-group">
-                <div class="col-sm-offset-3 col-sm-6">
-                    <button type="submit" name="register" class="btn btn-default">
-                        Register
-                    </button>
-                </div>
-            </div>
+
 
 
             <!-- Login Button -->

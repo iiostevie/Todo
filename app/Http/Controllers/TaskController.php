@@ -11,7 +11,7 @@ class TaskController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function store(Request $request){
@@ -27,32 +27,31 @@ class TaskController extends Controller
 
         // create a new task
 
-      /*
-        $request->user()->tasks()->create([
+        $request->Auth::user()->tasks()->create([
             'description' => $request->description,
         ]);
-      */
 
 
 
 
 
+/*
         $task = new Task;
         $task->description = $request->description;
         $task->userid = 1;
         $task->save();
+*/
 
 
-
-        return redirect('/task');
+        return redirect(route(table));
 
     }
 
     public function index(Request $request){
-        $tasks = Task::where('userid',[1])
+        $tasks = Task::where('userid',\Auth::id())
                 -> orderBy('created_at', 'asc')
                 ->get();
-        return view('task',['tasks' => $tasks]);
+        return view('task',['tasks' => $tasks,'user'=>\Auth::user()]);
     }
 
     public function destroy(Request $request){
